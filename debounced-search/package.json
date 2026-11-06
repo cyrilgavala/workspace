@@ -1,9 +1,0 @@
-{
-  "name": "debounced-search",
-  "version": "1.0.0",
-  "type": "module",
-  "description": "Debounced search filter over a JSON dataset (vanilla JS).",
-  "scripts": {
-    "test": "node --test"
-  }
-}
