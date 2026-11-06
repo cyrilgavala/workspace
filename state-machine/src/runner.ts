@@ -1,8 +1,5 @@
-// Minimal ambient declaration so the runner stays dependency-free (no @types/node).
-declare const process: { exit(code?: number): never };
-
 // A tiny, dependency-free test runner. Registers cases, runs each in a try/catch,
-// prints PASS/FAIL, and exits 1 if any fail.
+// prints PASS/FAIL, and returns the number of failures (the caller decides exit).
 type TestFn = () => void | Promise<void>;
 
 const tests: { name: string; fn: TestFn }[] = [];
@@ -26,7 +23,7 @@ export function expectThrow(fn: () => void, msg?: string): void {
   if (!threw) throw new Error(msg || 'expected an exception');
 }
 
-export async function run(): Promise<void> {
+export async function run(): Promise<number> {
   let failed = 0;
   for (const { name, fn } of tests) {
     try {
@@ -38,5 +35,5 @@ export async function run(): Promise<void> {
     }
   }
   console.log(`\n${tests.length - failed}/${tests.length} passed`);
-  if (failed > 0) process.exit(1);
+  return failed;
 }

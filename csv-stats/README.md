@@ -21,3 +21,9 @@ node cli.js no-such.csv amount     # prints a file-not-found error
 
 Empty or non-numeric cells in the column are skipped (with a note); a column with no
 numeric values is an error. Missing file or column prints an error and a non-zero exit.
+
+## Tests
+```bash
+cd csv-stats
+npm test          # node --test on the pure parse/stats functions
+```

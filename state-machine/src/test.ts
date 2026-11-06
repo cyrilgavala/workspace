@@ -1,3 +1,6 @@
+// Minimal ambient declaration so the entrypoint stays dependency-free (no @types/node).
+declare const process: { exit(code?: number): never };
+
 import { test, run, assert, expectThrow } from './runner';
 import { Machine } from './machine';
 
@@ -46,4 +49,7 @@ test('no outgoing transitions from done (terminal)', () => {
   expectThrow(() => m.send('resume'), 'expected resume from done to throw');
 });
 
-run();
+// Run the suite and exit non-zero if any case failed.
+run().then((failed) => {
+  if (failed > 0) process.exit(1);
+});

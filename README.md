@@ -47,7 +47,7 @@ Standalone Node/TypeScript mini-projects, independent of the Python projects abo
 self-contained with its own `README.md` and a single verify command:
 
 - `blog-api/` — in-memory blog REST API (Express + Jest). Verify: `cd blog-api && npm install && npm test`.
-- `csv-stats/` — CSV stats CLI, Node built-ins only. Verify: `cd csv-stats && node cli.js sample.csv amount`.
+- `csv-stats/` — CSV stats CLI, Node built-ins only. Verify: `cd csv-stats && node cli.js sample.csv amount` (or `npm test`).
 - `state-machine/` — guarded TS state machine with a hand-rolled PASS/FAIL runner. Verify: `cd state-machine && npm install && npm run test`.
 - `debounced-search/` — debounced search filter over JSON, framework-agnostic. Verify: `cd debounced-search && npm test`.
 

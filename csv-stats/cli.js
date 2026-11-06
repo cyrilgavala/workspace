@@ -38,6 +38,17 @@ function parseCsv(text) {
   return rows.filter((r) => r.some((cell) => cell !== ''));
 }
 
+// Summary of a list of numbers.
+function stats(values) {
+  const sum = values.reduce((a, b) => a + b, 0);
+  return {
+    count: values.length,
+    min: Math.min(...values),
+    max: Math.max(...values),
+    average: Math.round((sum / values.length) * 100) / 100,
+  };
+}
+
 function main(argv) {
   const file = argv[2];
   const column = argv[3];
@@ -83,12 +94,15 @@ function main(argv) {
     process.exit(1);
   }
 
-  const sum = values.reduce((a, b) => a + b, 0);
-  console.log(`column: ${header[idx]} (${values.length} value${values.length === 1 ? '' : 's'})`);
-  console.log(`min:     ${Math.min(...values)}`);
-  console.log(`max:     ${Math.max(...values)}`);
-  console.log(`average: ${Math.round((sum / values.length) * 100) / 100}`);
+  const s = stats(values);
+  console.log(`column: ${header[idx]} (${s.count} value${s.count === 1 ? '' : 's'})`);
+  console.log(`min:     ${s.min}`);
+  console.log(`max:     ${s.max}`);
+  console.log(`average: ${s.average}`);
   if (skipped > 0) console.log(`skipped: ${skipped} non-numeric/empty cell(s)`);
 }
 
-main(process.argv);
+module.exports = { parseCsv, stats };
+
+// Only run as a CLI when invoked directly, so tests can import the pure functions.
+if (require.main === module) main(process.argv);

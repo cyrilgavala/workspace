@@ -1,0 +1,8 @@
+{
+  "name": "csv-stats",
+  "version": "1.0.0",
+  "description": "CSV stats CLI (Node built-ins only).",
+  "scripts": {
+    "test": "node --test"
+  }
+}
