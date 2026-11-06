@@ -19,3 +19,6 @@ uv.lock
 .ruff_cache/
 .coverage
 htmlcov/
+/.idea/
+/blog-api/node_modules/
+/state-machine/node_modules/

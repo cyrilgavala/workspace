@@ -41,6 +41,16 @@ Configure Claude Code for a team working in a multi-surface monorepo: modular `C
 - `03-author-forked-deploy-check-skill/` — A forked `deploy-check` skill.
 - `04-plan-mode-and-explore-decision-doc/` — Plan mode vs. Explore decision doc.
 
+## JavaScript / TypeScript exercises
+
+Standalone Node/TypeScript mini-projects, independent of the Python projects above. Each is
+self-contained with its own `README.md` and a single verify command:
+
+- `blog-api/` — in-memory blog REST API (Express + Jest). Verify: `cd blog-api && npm install && npm test`.
+- `csv-stats/` — CSV stats CLI, Node built-ins only. Verify: `cd csv-stats && node cli.js sample.csv amount`.
+- `state-machine/` — guarded TS state machine with a hand-rolled PASS/FAIL runner. Verify: `cd state-machine && npm install && npm run test`.
+- `debounced-search/` — debounced search filter over JSON, framework-agnostic. Verify: `cd debounced-search && npm test`.
+
 ## Folder layout
 
 Every exercise pairs starter code with a solution and its own instructions. The exact nesting varies slightly by project:
